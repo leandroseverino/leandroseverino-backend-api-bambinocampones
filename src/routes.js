@@ -3,6 +3,9 @@ const { celebrate, Segments, Joi } = require('celebrate');
 
 const SessionController = require('./controllers/SessionController');
 const OngController = require('./controllers/OngController');
+
+const BannerController = require('./controllers/BannerController');
+
 const IncidentController = require('./controllers/IncidentController');
 const ProfileController = require('./controllers/ProfileController');
 
@@ -18,6 +21,9 @@ routes.post('/sessions', celebrate({
 }), SessionController.login);
 
 routes.get('/ongs', OngController.index);
+
+routes.get('/banners', BannerController.index);
+
 routes.post('/ongs', celebrate({
     [Segments.BODY]: Joi.object().keys({
         nome: Joi.string().required(),
